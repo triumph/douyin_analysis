@@ -12,7 +12,6 @@ jobs:
 #      image: "centos:7"  # 需要运行的容器镜像（参考 docker hub）
 
 
-
     steps:
 
       - name: Checkout Code
@@ -60,7 +59,7 @@ jobs:
         run: |
           ls -l
           sshpass -p ${{ secrets.PASSWORD }} scp -o StrictHostKeyChecking=no ./run.sh ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/
-          sshpass -p ${{ secrets.PASSWORD }} ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no /bin/bash /${{ secrets.USERNAME }}/run.sh &
+          sshpass -p ${{ secrets.PASSWORD }} ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no /bin/bash /${{ secrets.USERNAME }}/run.sh
           
           
 
