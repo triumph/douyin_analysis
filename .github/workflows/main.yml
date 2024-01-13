@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    container:
+      image: "centos:7"  # 需要运行的容器镜像（参考 docker hub）
 
 
     steps:
@@ -22,6 +24,10 @@ jobs:
           ls -l
           tar -zcvf douyin_analysis.tar.gz ./*
           ls -l
+
+      - name: Install sshpass
+        run: |
+          yum install -y sshpass
           
 
       # 发布Release
@@ -50,16 +56,6 @@ jobs:
 
       #部署到服务器
       - name: Deploy to My Server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            cd /data/soft
-            wget https://github.com/STZZ-1992/douyin_analysis/releases/latest/download/douyin_analysis.tar.gz -o douyin_analysis.tar.gz
-            tar -zxvf douyin_analysis.tar.gz
-            conda activate stzzWang
-            ll
+        run: |
+          /bin/bash run.sh
 
