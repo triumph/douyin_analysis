@@ -61,7 +61,7 @@ jobs:
           sshpass -p ${{ secrets.PASSWORD }} scp -o StrictHostKeyChecking=no ./run.sh ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/
           sshpass -p ${{ secrets.PASSWORD }} scp -o StrictHostKeyChecking=no ./douyin_analysis.tar.gz ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/
           sshpass -p ${{ secrets.PASSWORD }} ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no chmod +x  /${{ secrets.USERNAME }}/run.sh
-          sshpass -p ${{ secrets.PASSWORD }} ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}/run.sh
+          sshpass -p ${{ secrets.PASSWORD }} ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no /${{ secrets.USERNAME }}/run.sh
           
           
 
