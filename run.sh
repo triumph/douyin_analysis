@@ -3,4 +3,4 @@ wget https://github.com/STZZ-1992/douyin_analysis/releases/latest/download/douyi
 tar -zxvf douyin_analysis.tar.gz -C ./douyin_analysis
 cd douyin_analysis
 pip install -r requirements.txt
-python CODES/main.py
+python CODES/main.py &
