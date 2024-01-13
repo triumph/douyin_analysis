@@ -25,9 +25,9 @@ jobs:
           tar -zcvf douyin_analysis.tar.gz ./*
           ls -l
 
-      - name: Install sshpass,scp,scp
+      - name: Install sshpass
         run: |
-          sudo apt install -y sshpass scp
+          sudo apt install -y sshpass
           
 
       # 发布Release
