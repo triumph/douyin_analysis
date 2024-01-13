@@ -57,6 +57,7 @@ jobs:
       #部署到服务器
       - name: Deploy to My Server
         run: |
+          ls -l
           sshpass -p '${{ secrets.PASSWORD }}' ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no rsync run.sh ~/
           sshpass -p '${{ secrets.PASSWORD }}' ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no /bin/bash ~/run.sh
           
