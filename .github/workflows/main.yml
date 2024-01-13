@@ -25,9 +25,9 @@ jobs:
           tar -zcvf douyin_analysis.tar.gz ./*
           ls -l
 
-      - name: Install sshpass
+      - name: Install sshpass,rsync
         run: |
-          sudo apt install -y sshpass
+          sudo apt install -y sshpass rsync
           
 
       # 发布Release
@@ -57,6 +57,8 @@ jobs:
       #部署到服务器
       - name: Deploy to My Server
         run: |
-          sshpass -p '${{ secrets.PASSWORD }}' ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no cd /data/soft;wget https://github.com/STZZ-1992/douyin_analysis/releases/latest/download/douyin_analysis.tar.gz;tar -zxvf douyin_analysis.tar.gz;conda init; conda activate stzzWang; ll
+          sshpass -p '${{ secrets.PASSWORD }}' ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no rsync run.sh ~/
+          sshpass -p '${{ secrets.PASSWORD }}' ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no /bin/bash ~/run.sh
+          
           
 
