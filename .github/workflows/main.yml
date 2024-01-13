@@ -1,5 +1,8 @@
 name: douyin without watermarker analysis
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 
 jobs:
@@ -56,7 +59,7 @@ jobs:
           script: |
             cd /data/soft
             wget https://github.com/STZZ-1992/douyin_analysis/releases/latest/download/release.tgz -o release.tgz
-            tar -zxvf release.tgz
+            tar -zxvf douyin_analysis.tar.gz
             conda activate stzzWang
             ll
 
