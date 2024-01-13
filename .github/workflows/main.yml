@@ -15,7 +15,8 @@ jobs:
       - name: Build Package
         id: build_package
         run: |
-          tar -zcvf douyin_analysis.tgz ./*
+          ls -l
+          tar -zcvf douyin_analysis.tgz *
           
 
       # 发布Release
