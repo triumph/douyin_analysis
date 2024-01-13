@@ -57,6 +57,6 @@ jobs:
       #部署到服务器
       - name: Deploy to My Server
         run: |
-          sshpass -p '${{ secrets.PASSWORD }}' ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no cd /data/soft;wget https://github.com/STZZ-1992/douyin_analysis/releases/latest/download/douyin_analysis.tar.gz -o douyin_analysis.tar.gz;tar -zxvf douyin_analysis.tar.gz; conda activate stzzWang; ll
+          sshpass -p '${{ secrets.PASSWORD }}' ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no cd /data/soft;wget https://github.com/STZZ-1992/douyin_analysis/releases/latest/download/douyin_analysis.tar.gz;tar -zxvf douyin_analysis.tar.gz; conda activate stzzWang; ll
           
 
