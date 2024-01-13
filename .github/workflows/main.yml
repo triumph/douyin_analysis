@@ -8,8 +8,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    container:
-      image: "centos:7"  # 需要运行的容器镜像（参考 docker hub）
+#    container:
+#      image: "centos:7"  # 需要运行的容器镜像（参考 docker hub）
 
 
     steps:
@@ -27,7 +27,7 @@ jobs:
 
       - name: Install sshpass
         run: |
-          yum install -y sshpass
+          sudo apt install -y sshpass
           
 
       # 发布Release
