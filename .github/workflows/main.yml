@@ -1,8 +1,5 @@
 name: douyin without watermarker analysis
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 
 jobs:
@@ -21,6 +18,7 @@ jobs:
         run: |
           ls -l
           tar -zcvf douyin_analysis.tgz ./*
+          ls -l
           
 
       # 发布Release
@@ -30,8 +28,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: ${{ github.ref_name }}_${{ github.run_number }}
+          release_name: Release ${{ github.ref_name }}_${{ github.run_number }}
           draft: false
           prerelease: false
 
