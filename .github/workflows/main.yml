@@ -13,27 +13,41 @@ jobs:
 
 
     steps:
-      - name: Set up google-chrome
-        run: |
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo apt install ./google-chrome-stable_current_amd64.deb
-          
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      # 发布Release
+      - name: Create Release
+        id: create_release
+        uses: actions/create_release@master
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
-          python-version: "3.11"
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
 
-      - name: checkout - download code
-        uses: actions/checkout@v1
+      #上传构建结果到Release
+      - name: Upload Release Resources
+        id: upload_release_resources
+        uses: actions/upload-release-asset@master
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          release_name: ./release.tgz
+          asset_name: release.tgz
+          asset_content_type: application/x-tgz
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pwd
-          ls -l
-          pip install -r requirements.txt
+      #部署到服务器
+      - name: Deploy to My Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secret.HOST }}
+          username: ${{ secret.PASSWORD }}
+          port: ${{ secret.PORT }}
+          script:
+            cd /data/soft
+            wget https://github.com/STZZ-1992/douyin_analysis/releases/latest/download/release.tgz -o release.tgz
+            tar -zxvf release.tgz
+            conda activate stzzWang
+            ll
 
-      - name: Run Instance
-        run: |
-          python CODES/main.py &
