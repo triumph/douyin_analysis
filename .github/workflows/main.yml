@@ -12,11 +12,15 @@ jobs:
 
     steps:
 
+      - name: Checkout Code
+        id: checkout_code
+        uses: actions/checkout@master
+
       - name: Build Package
         id: build_package
         run: |
           ls -l
-          tar -zcvf douyin_analysis.tgz *
+          tar -zcvf douyin_analysis.tgz ./*
           
 
       # 发布Release
