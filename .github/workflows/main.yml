@@ -17,7 +17,7 @@ jobs:
         id: build_package
         run: |
           ls -l
-          tar -zcvf douyin_analysis.tgz ./*
+          tar -zcvf douyin_analysis.tar.gz ./*
           ls -l
           
 
@@ -41,9 +41,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./douyin_analysis.tgz
-          asset_name: douyin_analysis.tgz
-          asset_content_type: application/x-tgz
+          asset_path: ./douyin_analysis.tar.gz
+          asset_name: douyin_analysis.tar.gz
+          asset_content_type: application/gzip
 
       #部署到服务器
       - name: Deploy to My Server
