@@ -11,6 +11,11 @@ jobs:
 
 
     steps:
+
+      - name: Build Package
+        id: build_package
+        run: |
+          tar -zxvf douyin_analysis.tgz ./*
       # 发布Release
       - name: Create Release
         id: create_release
@@ -31,8 +36,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./release.tgz
-          asset_name: release.tgz
+          asset_path: ./douyin_analysis.tgz
+          asset_name: douyin_analysis.tgz
           asset_content_type: application/x-tgz
 
       #部署到服务器
