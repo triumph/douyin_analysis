@@ -1,0 +1,39 @@
+name: douyin without watermarker analysis
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+
+    steps:
+      - name: Set up google-chrome
+        run: |
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo apt install ./google-chrome-stable_current_amd64.deb
+          
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: checkout - download code
+        uses: actions/checkout@v1
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pwd
+          ls -l
+          pip install -r requirements.txt
+
+      - name: Run Instance
+        run: |
+          python CODES/main.py &
