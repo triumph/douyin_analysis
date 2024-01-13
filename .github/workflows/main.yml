@@ -25,7 +25,7 @@ jobs:
           tar -zcvf douyin_analysis.tar.gz ./*
           ls -l
 
-      - name: Install sshpass,rsync
+      - name: Install sshpass,scp,rsync
         run: |
           sudo apt install -y sshpass rsync
           
@@ -58,7 +58,7 @@ jobs:
       - name: Deploy to My Server
         run: |
           ls -l
-          sshpass -p '${{ secrets.PASSWORD }}' ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no rsync ./run.sh ~/
+          sshpass -p '${{ secrets.PASSWORD }}' ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no rsync ./run.sh ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/
           sshpass -p '${{ secrets.PASSWORD }}' ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -o StrictHostKeyChecking=no /bin/bash ~/run.sh
           
           
