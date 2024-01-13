@@ -41,9 +41,9 @@ jobs:
       - name: Deploy to My Server
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secret.HOST }}
-          username: ${{ secret.PASSWORD }}
-          port: ${{ secret.PORT }}
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
           script:
             cd /data/soft
             wget https://github.com/STZZ-1992/douyin_analysis/releases/latest/download/release.tgz -o release.tgz
