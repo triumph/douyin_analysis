@@ -1,5 +1,5 @@
 # 从官方 Python 基础镜像开始
-FROM dokken/centos-stream-9:latest
+FROM centos:latest
 
 # 将当前工作目录设置为 /code
 # 这是放置 requirements.txt 文件和应用程序目录的地方
@@ -18,10 +18,10 @@ RUN yum install -y google-chrome-stable
 RUN yum install -y python3.11-pip
 
 # 运行 pip 命令安装依赖项
-RUN /bin/bash pip3 install --no-cache-dir --upgrade -r /root/requirements.txt
+RUN pip3 install --no-cache-dir --upgrade -r /root/requirements.txt
 
 # 复制 FastAPI 项目代码
 COPY ./CODES /root/douyin_analysis/CODES
 
 # 运行服务
-ENTRYPOINT /bin/bash python3 /root/douyin_analysis/CODES/main.py
+ENTRYPOINT python3 /root/douyin_analysis/CODES/main.py
