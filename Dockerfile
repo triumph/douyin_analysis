@@ -27,7 +27,7 @@ RUN ln -s /usr/local/python3/bin/python3 /usr/bin/python3
 RUN ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
 
 
-RUN python3 -m pip3 install --upgrade pip --trusted-host=pypi.python.org --trusted-host=pypi.org --trusted-host=files.pythonhosted.org
+RUN python3 -m pip install --upgrade pip --trusted-host=pypi.python.org --trusted-host=pypi.org --trusted-host=files.pythonhosted.org
 
 # 运行 pip 命令安装依赖项
 RUN pip3 install --no-cache-dir --upgrade -r /root/requirements.txt
