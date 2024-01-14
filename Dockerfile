@@ -36,7 +36,6 @@ RUN ldconfig -v
 
 RUN openssl version
 
-
 RUN tar -zxvf /root/Python-3.11.7.tgz
 RUN cd /root/Python-3.11.7;./configure --prefix=/usr/local/python3 --with-openssl=/usr/local/openssl;make && make install
 RUN ln -s /usr/local/python3/bin/python3 /usr/bin/python3
