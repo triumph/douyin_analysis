@@ -15,7 +15,7 @@ COPY ./google_chrome.repo /etc/yum.repos.d/
 
 RUN yum install -y google-chrome-stable
 RUN yum install -y python3.11
-RUN yum install -y python3.11-pip
+RUN whereis python
 
 # 运行 pip 命令安装依赖项
 RUN pip install --no-cache-dir --upgrade -r /root/requirements.txt
