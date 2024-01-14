@@ -16,11 +16,13 @@ COPY ./google_chrome.repo /etc/yum.repos.d/
 RUN yum install -y google-chrome-stable
 RUN yum install -y gcc
 RUN yum install -y make
-RUN yum install -y build-essential pkg-config zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev
+RUN yum install -y zlib-devel
+RUN yum install -y zlib
+RUN yum install -y openssl-devel
 #RUN yum install -y python3.11
 COPY ./Python-3.11.7.tgz /root/Python-3.11.7.tgz
 RUN tar -zxvf /root/Python-3.11.7.tgz
-RUN cd /root/Python-3.11.7;./configure --prefix=/usr/local/python3 --with-zlib --enable-optimizations;make -j 4&& make install
+RUN cd /root/Python-3.11.7;./configure --prefix=/usr/local/python3 --with-zlib;make && make install
 RUN ln -s /usr/local/python3/bin/python3 /usr/bin/python3
 RUN ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
 
