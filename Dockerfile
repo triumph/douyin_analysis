@@ -1,5 +1,5 @@
 # 从官方 Python 基础镜像开始
-FROM centos:latest
+FROM centos:7
 
 # 将当前工作目录设置为 /code
 # 这是放置 requirements.txt 文件和应用程序目录的地方
