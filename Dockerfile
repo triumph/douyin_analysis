@@ -14,14 +14,14 @@ COPY ./requirements.txt /root/requirements.txt
 COPY ./google_chrome.repo /etc/yum.repos.d/
 
 RUN yum install -y google-chrome-stable
-RUN yum install -y python3.11
+#RUN yum install -y python3.11
 RUN yum install -y python3.11-pip
 
 # 运行 pip 命令安装依赖项
-RUN pip3 install --no-cache-dir --upgrade -r /root/requirements.txt
+RUN /bin/bash pip3 install --no-cache-dir --upgrade -r /root/requirements.txt
 
 # 复制 FastAPI 项目代码
 COPY ./CODES /root/douyin_analysis/CODES
 
 # 运行服务
-ENTRYPOINT python3 /root/douyin_analysis/CODES/main.py
+ENTRYPOINT /bin/bash python3 /root/douyin_analysis/CODES/main.py
