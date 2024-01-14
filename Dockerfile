@@ -11,6 +11,10 @@ RUN mkdir douyin_analysis
 # 由于这个文件不经常更改，Docker 会检测它并在这一步使用缓存，也为下一步启用缓存
 COPY ./requirements.txt /root/requirements.txt
 
+COPY ./google_chrome.repo /etc/yum.repos.d/
+
+RUN yum install -y google-chrome-stable
+
 # 运行 pip 命令安装依赖项
 RUN pip install --no-cache-dir --upgrade -r /root/requirements.txt
 
