@@ -27,7 +27,7 @@ RUN ln -s /usr/local/python3/bin/python3 /usr/bin/python3
 RUN ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
 
 # 运行 pip 命令安装依赖项
-RUN pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org --trusted-host pypi.python.org --no-cache-dir --upgrade -r /root/requirements.txt
+RUN pip3 install --no-cache-dir --upgrade -r /root/requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 # 复制 FastAPI 项目代码
 COPY ./CODES /root/douyin_analysis/CODES
