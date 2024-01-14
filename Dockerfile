@@ -25,9 +25,9 @@ COPY ./openssl-1.1.1w.tar.gz /root/openssl-1.1.1w.tar.gz
 COPY ./Python-3.11.7.tgz /root/Python-3.11.7.tgz
 RUN tar -zxvf /root/openssl-1.1.1w.tar.gz
 RUN cd /root/openssl-1.1.1w; ./config --prefix=/usr/local/openssl; make && make install
-RUN mv /usr/bin/openssl /usr/bin/openssl.old
-RUN mv /usr/lib64/openssl /usr/lib64/openssl.old
-RUN mv /usr/lib64/libssl.so /usr/lib64/libssl.so.old
+#RUN mv /usr/bin/openssl /usr/bin/openssl.old
+#RUN mv /usr/lib64/openssl /usr/lib64/openssl.old
+#RUN mv /usr/lib64/libssl.so /usr/lib64/libssl.so.old
 RUN ln -s /usr/local/openssl/bin/openssl /usr/bin/openssl
 RUN ln -s /usr/local/openssl/include/openssl /usr/include/openssl
 RUN ln -s /usr/local/openssl/lib/libssl.so /usr/lib64/libssl.so
