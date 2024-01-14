@@ -20,7 +20,7 @@ RUN yum install -y zlib
 #RUN yum install -y python3.11
 COPY ./Python-3.11.7.tgz /root/Python-3.11.7.tgz
 RUN tar -zxvf /root/Python-3.11.7.tgz
-RUN cd /root/Python-3.11.7;./configure --prefix=/usr/local/python3;make && make install
+RUN cd /root/Python-3.11.7;./configure --prefix=/usr/local/python3 --with-zlib;make && make install
 RUN ln -s /usr/local/python3/bin/python3 /usr/bin/python3
 RUN ln -s /usr/local/python3/bin/pip3 /usr/bin/pip3
 
