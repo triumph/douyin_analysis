@@ -49,3 +49,4 @@ COPY ./CODES /root/douyin_analysis/CODES
 
 # 运行服务
 ENTRYPOINT python3 /root/douyin_analysis/CODES/main.py
+
