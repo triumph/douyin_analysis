@@ -1,5 +1,5 @@
 # 从官方 Python 基础镜像开始
-FROM python:3.11
+FROM dokken/centos-stream-9:latest
 
 # 将当前工作目录设置为 /code
 # 这是放置 requirements.txt 文件和应用程序目录的地方
@@ -14,6 +14,7 @@ COPY ./requirements.txt /root/requirements.txt
 COPY ./google_chrome.repo /etc/yum.repos.d/
 
 RUN yum install -y google-chrome-stable
+RUN yum install -y python3.11
 
 # 运行 pip 命令安装依赖项
 RUN pip install --no-cache-dir --upgrade -r /root/requirements.txt
