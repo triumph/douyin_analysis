@@ -47,6 +47,8 @@ RUN pip3 install --no-cache-dir --upgrade -r /root/requirements.txt -i https://p
 # 复制 FastAPI 项目代码
 COPY ./CODES /root/douyin_analysis/CODES
 
+EXPOSE 8080
+
 # 运行服务
-ENTRYPOINT nohup python3 /root/douyin_analysis/CODES/main.py &
+ENTRYPOINT python3 /root/douyin_analysis/CODES/main.py
 
