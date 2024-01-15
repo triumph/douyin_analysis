@@ -38,6 +38,8 @@ async def douyin_without_watermarker_analysis(accept: DouYinWithoutWatermarker):
         while True:
             res = page.listen.wait()  # 等待并获取一个数据包
             print(res.url)
+
+
             if "https://www.douyin.com/aweme/v1/web/aweme/post/" in res.url:
                 data = json.loads(res._raw_body)
                 data_list = data["aweme_list"]
