@@ -50,5 +50,5 @@ COPY ./CODES /root/douyin_analysis/CODES
 EXPOSE 8080
 
 # 运行服务
-ENTRYPOINT python3 /root/douyin_analysis/CODES/main.py
+CMD ["python3", "/root/douyin_analysis/CODES/main.py"]
 
