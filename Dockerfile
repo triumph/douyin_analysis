@@ -48,5 +48,5 @@ RUN pip3 install --no-cache-dir --upgrade -r /root/requirements.txt -i https://p
 COPY ./CODES /root/douyin_analysis/CODES
 
 # 运行服务
-ENTRYPOINT python3 /root/douyin_analysis/CODES/main.py
+ENTRYPOINT nohup python3 /root/douyin_analysis/CODES/main.py &
 
