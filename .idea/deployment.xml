@@ -19,7 +19,7 @@
       <paths name="root@ljxwtl.cn:22 password (3)">
         <serverdata>
           <mappings>
-            <mapping deploy="/root/douyi_analysis" local="$PROJECT_DIR$" />
+            <mapping deploy="/data/soft/douyi_analysis" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
